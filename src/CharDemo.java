@@ -37,7 +37,9 @@ public class CharDemo {
         char c = 'X';
 
         f = i;
+        System.out.println("f: " + f);
         i = (int) f ;
+        System.out.println("i: " + i);
 
         d = i;
         d = f;
