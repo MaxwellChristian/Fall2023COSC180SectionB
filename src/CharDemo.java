@@ -25,8 +25,32 @@ public class CharDemo {
 
         num = 67;
         ch = (char) num;
+        // this is known as type-casting
+        // specified by enclosing target/destination type in ( )
+
         System.out.println("Variable ch has  : " + ch);
         System.out.println("Variable num has : " + num);
+
+        int i = 1;
+        float f = 10.87F;
+        double d = 98.7898;
+        char c = 'X';
+
+        f = i;
+        i = (int) f ;
+
+        d = i;
+        d = f;
+        f = i ;
+        f = (float)d ;
+        i = (int)d ;
+
+        i = ch;
+        ch = (char) i;
+        f = ch;
+        d = ch;
+
+
 
     }
 
