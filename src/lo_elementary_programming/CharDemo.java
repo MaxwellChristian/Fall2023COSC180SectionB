@@ -1,3 +1,5 @@
+package lo_elementary_programming;
+
 /*
 * This program demonstrates the use of char type
 * */

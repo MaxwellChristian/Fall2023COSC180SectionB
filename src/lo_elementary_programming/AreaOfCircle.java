@@ -1,3 +1,4 @@
+package lo_elementary_programming;
 
 // Write a program to
 // find/compute/calculate and

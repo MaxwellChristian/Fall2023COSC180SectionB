@@ -1,4 +1,4 @@
-
+package lo_elementary_programming;
 // Write a program that displays your full name on the screen
 
 public class ShowName {

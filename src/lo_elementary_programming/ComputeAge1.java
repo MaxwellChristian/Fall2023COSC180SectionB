@@ -1,3 +1,5 @@
+package lo_elementary_programming;
+
 import java.util.Scanner;
 
 /*

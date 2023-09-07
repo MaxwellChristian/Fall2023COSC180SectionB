@@ -1,3 +1,5 @@
+package lo_elementary_programming;
+
 /*
 this program demonstrates the use of String
  */

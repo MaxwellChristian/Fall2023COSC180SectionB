@@ -1,4 +1,4 @@
-
+package lo_elementary_programming;
 // Input first and last name from the user and display
 // the full name as last name followed by first name
 
