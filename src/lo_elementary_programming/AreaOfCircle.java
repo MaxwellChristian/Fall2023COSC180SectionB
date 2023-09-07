@@ -3,6 +3,9 @@ package lo_elementary_programming;
 // Write a program to
 // find/compute/calculate and
 // display the area of a circle with radius 35.2
+
+// after displaying the area of the circle,
+// the program should take input of radius from user and display the computed area
 public class AreaOfCircle {
 
     // starting point
