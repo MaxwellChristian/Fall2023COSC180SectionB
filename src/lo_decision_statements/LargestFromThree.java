@@ -1,16 +1,15 @@
 package lo_decision_statements;
 
-// Write a program to find the larger of two numbers provided by user
-
 import java.util.Scanner;
 
-public class LargerOfTwo {
+public class LargestFromThree {
 
     public static void main(String []args) {
 
         // declaration section
         int num1;
         int num2;
+        int num3;
 
         // input section
 
@@ -24,22 +23,32 @@ public class LargerOfTwo {
         System.out.print("Enter num 2: ");
         num2 = inputLine.nextInt();
 
-        // check for larger value
-        if( num1 > num2 ){
-            System.out.println(num1 + " is larger");
-        }
-        else {
-//            System.out.println("In FALSE");
+        // input number 3
+        System.out.print("Enter num 3: ");
+        num3 = inputLine.nextInt();
 
-            if( num2 > num1 ){
-                System.out.println(num2 + " is larger");
+        // check
+        if( num1 > num2 ){
+
+            if( num1 > num3 ){
+                System.out.println(num1 + " is largest");
             }
             else {
-                System.out.println(num1 + " and " + num2 + " are same");
+                System.out.println(num3 + " is largest");
             }
-        }
 
-        System.out.println("Done");
+        }
+        else {
+            // it means num2 is larger than num1
+
+            if( num2 > num3 ){
+                System.out.println(num2 + " is largest");
+            }
+            else {
+                System.out.println(num3 + " is largest");
+            }
+
+        }
 
     }
 
