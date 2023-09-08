@@ -29,6 +29,14 @@ public class PositiveNegativeCheck {
             System.out.println(number + " : negative");
         }
 
+        // below is a list of relational operators
+        // > : greater than
+        // < : less than
+        // == : comparison
+        // >= : greater than or equals to
+        // <= : less than or equals to
+        // != : not equals to
+
     }
 
 }
