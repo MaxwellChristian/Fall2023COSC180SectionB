@@ -27,28 +27,43 @@ public class LargestFromThree {
         System.out.print("Enter num 3: ");
         num3 = inputLine.nextInt();
 
-        // check
-        if( num1 > num2 ){
-
-            if( num1 > num3 ){
-                System.out.println(num1 + " is largest");
+        if( num1 == num2 ){
+            if( num1 == num3 ){
+                System.out.println("All numbers are same");
             }
             else {
-                System.out.println(num3 + " is largest");
-            }
+                // check
+                if( num1 > num2 ){
 
+                    if( num1 > num3 ){
+                        System.out.println(num1 + " is largest");
+                    }
+                    else {
+                        if ( num3 > num1 ){
+                            System.out.println(num3 + " is largest");
+                        }
+                        else {
+                            System.out.println(num1 + " and " + num3 + " are equal (largest)");
+                        }
+
+                    }
+
+                }
+                else {
+                    // it means num2 is larger than num1
+
+                    if( num2 > num3 ){
+                        System.out.println(num2 + " is largest");
+                    }
+                    else {
+                        System.out.println(num3 + " is largest");
+                    }
+
+                }
+            }
         }
-        else {
-            // it means num2 is larger than num1
 
-            if( num2 > num3 ){
-                System.out.println(num2 + " is largest");
-            }
-            else {
-                System.out.println(num3 + " is largest");
-            }
 
-        }
 
     }
 
