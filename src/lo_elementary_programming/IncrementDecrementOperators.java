@@ -1,6 +1,5 @@
 package lo_elementary_programming;
 
-import java.sql.SQLSyntaxErrorException;
 
 public class IncrementDecrementOperators {
 
