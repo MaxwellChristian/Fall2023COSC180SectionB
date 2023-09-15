@@ -52,9 +52,18 @@ public class StringFnDemo {
         // a small task
         // given a string with multiple words,
         // display the second and the last word
-        name = "My name is Maxwell Christian";  // expected output : name Christian
+        name = "The name by which I am known is Maxwell Christian";  // expected output : name Christian
 
+        // for second word, need to find the index of first and second space.
+        // all the characters between the first and second space makes the second word
 
+        int indexOfFirstSpace = name.indexOf(' ');
+        int indexOfSecondSpace = name.indexOf(' ', indexOfFirstSpace+1);
+        System.out.println("Second word: " + name.substring(indexOfFirstSpace+1, indexOfSecondSpace) );
+
+        // for last word, everything after the last space
+        int indexOfLastSpace = name.lastIndexOf(' ');
+        System.out.println("Last word: " + name.substring(indexOfLastSpace+1));
     }
 
 }
