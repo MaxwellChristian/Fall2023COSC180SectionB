@@ -1,4 +1,4 @@
-package lo_repititions;
+package lo_arrays;
 
 import java.util.Scanner;
 
