@@ -37,6 +37,10 @@ public class ReplaceCharacterInText {
         replacingChar = inputLine.next().charAt(0);
 
         String replacedString = "";
+        // String replacedString = new String();
+        // String replacedString = new String("");
+
+
         int totalOccurences = 0;
         for( int counter = 0 ; counter < inputText.length() ; counter++ ){
 
