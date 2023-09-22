@@ -12,10 +12,9 @@ package lo_arrays;
 * Consonants : H,L,L,W,R,L,D
 * */
 
-import javax.annotation.processing.SupportedSourceVersion;
 import java.util.Scanner;
 
-public class VowelAndConsonants {
+public class VowelAndConsonants2 {
 
     public static void main(String []args){
 
@@ -42,27 +41,15 @@ public class VowelAndConsonants {
         // try to ignore special characters, non-printable characters in check
         for (counter = 0 ; counter < text.length() ; counter++ ) {
 
-            if( text.charAt(counter) == 'a' ||
-                    text.charAt(counter) == 'A' ||
-                    text.charAt(counter) == 'e' ||
-                    text.charAt(counter) == 'E' ||
-                    text.charAt(counter) == 'i' ||
-                    text.charAt(counter) == 'I' ||
-                    text.charAt(counter) == 'o' ||
-                    text.charAt(counter) == 'O' ||
-                    text.charAt(counter) == 'u' ||
-                    text.charAt(counter) == 'U' ){
+            if( Character.isAlphabetic(text.charAt(counter)) ){
 
-                // store to the vowel list
-                vowels[vowelCounter++] = text.charAt(counter);
-            }
-            else {
-                // check for all other alphabets
-                if( (text.charAt(counter) >= 'a' && text.charAt(counter) <= 'z')
-                        ||
-                        (text.charAt(counter) >= 'A' && text.charAt(counter) <= 'Z') ){
+                if( "aeiouAEIOU".indexOf(text.charAt(counter)) != -1 ){
+                    vowels[vowelCounter++] = text.charAt(counter);
+                }
+                else {
                     consonants[consonantCounter++] = text.charAt(counter);
                 }
+
             }
 
         }
