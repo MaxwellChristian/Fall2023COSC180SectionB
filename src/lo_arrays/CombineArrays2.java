@@ -19,7 +19,7 @@ import java.util.Scanner;
 * arr2 : 100, 78, 75, 11, 11, 78, 75
 * arr3 : 10, 78, 32, 45, 11, 100, 78, 75, 11, 11, 78, 75
 * */
-public class CombineArrays {
+public class CombineArrays2 {
 
     public static void main(String []args) {
 
@@ -45,26 +45,18 @@ public class CombineArrays {
         int pos2;
         int pos3;
 
+        pos3 = 0;
         for( pos1 = 0 ; pos1 < arr1.length ; pos1++ ){
-            arr1[pos1] = new Random().nextInt(100);
+            arr3[pos3++] = arr1[pos1] = new Random().nextInt(100);
         }
 
         for( pos2 = 0 ; pos2 < arr2.length ; pos2++ ){
-            arr2[pos2] = new Random().nextInt(100);
+            arr3[pos3++] = arr2[pos2] = new Random().nextInt(100);
         }
 
         // combine the two arrays to third array
+        // already copied while generating values
 
-        // copy values from arr1 to arr3
-        pos3 = 0 ;
-        for( pos1 = 0 ; pos1 < arr1.length ; pos1++ ){
-            arr3[pos3++] = arr1[pos1];
-        }
-
-        // append values from arr2 to arr3
-        for( pos2 = 0 ; pos2 < arr2.length ; pos2++ ){
-            arr3[pos3++] = arr2[pos2];
-        }
 
         // display all arrays
 
