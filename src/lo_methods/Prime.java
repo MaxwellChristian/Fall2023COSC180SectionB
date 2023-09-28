@@ -6,6 +6,9 @@ import java.util.Scanner;
 * Write a program which takes input of two numbers and
 * displays all the prime numbers between those two numbers.
 *
+* the program should work even if the start number is larger than end number.
+* The output should still be in sequence from start to end
+*
 * Prime numbers are divisible ONLY by 1 and itself.
 * i.e., it does not have any factors other than 1 and itself.
 * */
@@ -23,6 +26,24 @@ public class Prime {
 
         System.out.print("Enter end number: ");
         endNumber = inputLine.nextInt();
+
+        if( startNumber > endNumber ){
+            int temp;
+            temp = startNumber;
+            startNumber = endNumber;
+            endNumber = temp;
+        }
+
+        // smaller = Math.min(startNumber, endNumber);
+        // larger = Math.max(startNumber, endNumber);
+        for(
+                int s = Math.min(startNumber, endNumber) ;
+                s <= Math.max(startNumber, endNumber) ;
+                s++ ){
+            if( isPrime(s) ){
+                System.out.println(s + " : Prime");
+            }
+        }
 
         for( int n = startNumber ; n <= endNumber ; n++ ){
 
