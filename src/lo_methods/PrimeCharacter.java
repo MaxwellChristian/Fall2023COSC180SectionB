@@ -1,5 +1,6 @@
 package lo_methods;
 
+import javax.security.auth.callback.CallbackHandler;
 import java.util.Scanner;
 
 public class PrimeCharacter {
@@ -23,11 +24,47 @@ public class PrimeCharacter {
 
         }
         */
+
+        int digits = 0;
+        int lower = 0;
+        int upper = 0;
+        int specials = 0;
+        int spaces = 0;
+
         for (char ch : text.toCharArray()) {
+
             if (isPrime(ch)) {
                 System.out.println(ch + ": " + (int) ch);
             }
+
+            if (Character.isDigit(ch)) {
+                digits++;
+            } else {
+                if (Character.isAlphabetic(ch)) {
+
+                    if (Character.isLowerCase(ch)) {
+                        lower++;
+                    } else {
+                        upper++;
+                    }
+
+                } else {
+                    if (Character.isSpaceChar(ch)) {
+                        spaces++;
+                    } else {
+                        specials++;
+                    }
+
+                }
+            }
+
         }
+
+        System.out.println("Digits: " + digits);
+        System.out.println("Lower case: " + lower);
+        System.out.println("Upper case: " + upper);
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Special symbols: " + specials);
 
     }
 
