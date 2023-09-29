@@ -28,10 +28,35 @@ public class SumOfDigits {
 
         System.out.println(value + " : reversed : " + reverse(value)  );
 
+        String sNum = String.valueOf(value);    // converting int to String
+        StringBuilder sb = new StringBuilder(sNum);
+        sb = sb.reverse();
+        sNum = String.valueOf(sb);  // converting string builder to string
+
+        int reversedNumber = Integer.parseInt(sNum);    // converting String to int
+
+        System.out.println("Reversed number: " + reversedNumber);
+
     }
 
     static int reverse(int value){
-        return 0;
+
+        // assume the number be 57
+        // the number is made is this way
+        // (5*10) + (7*1) = 57;
+
+        int reversedNumber = 0 ;
+        while (value > 0) {
+
+            int dig = value % 10;
+
+            reversedNumber *= 10;
+            reversedNumber += dig;
+
+            value /= 10;
+        }
+
+        return reversedNumber;
     }
 
     private static int countDigits(int value) {
