@@ -26,8 +26,8 @@ public class ReverseWordsOfText {
         System.out.println();
 
         // display reverse of each line
-        for( String line :  text.split(".") ){
-            System.out.println( new StringBuilder(line).reverse() );
+        for( String line :  text.split("\\.") ){
+            System.out.println( "Line: " + new StringBuilder(line).reverse() );
         }
 
 
