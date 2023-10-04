@@ -36,7 +36,6 @@ public class ReverseWordsOfText {
             System.out.print(ch + "/");
         }
 
-
     }
 
 }
