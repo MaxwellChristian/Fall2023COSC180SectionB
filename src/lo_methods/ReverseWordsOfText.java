@@ -30,6 +30,12 @@ public class ReverseWordsOfText {
             System.out.println( "Line: " + new StringBuilder(line).reverse() );
         }
 
+        // display all characters from the text
+        String []characters = text.split("");
+        for (String ch: characters) {
+            System.out.print(ch + "/");
+        }
+
 
     }
 
