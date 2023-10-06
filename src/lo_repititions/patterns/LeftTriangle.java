@@ -18,6 +18,21 @@ public class LeftTriangle {
 
         }
 
+        // using a while loop
+        row = 1;    // start [before the loop]
+        while (row <= 7){   // condition [check every time the loop works]
+
+            col = 1;
+            while (col <= row){
+                System.out.print(col);
+                col++;
+            }
+
+            System.out.println();
+
+            row++;  // change [always inside the loop such that it affects the condition]
+        }
+
 
     }
 
