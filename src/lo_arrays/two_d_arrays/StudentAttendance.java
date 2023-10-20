@@ -69,6 +69,17 @@ public class StudentAttendance {
             System.out.printf("Student %d: %d\n", student+1, studentPresenceCount);
         }
 
+        // student presence count as per each day i.e. day count
+        for (day = 0; day < TOTAL_DAYS; day++) {
+            studentPresenceCount = 0;
+            for (student = 0; student < TOTAL_STUDENTS; student++) {
+                if( attendance2[student][day] == 1 ){
+                    studentPresenceCount++;
+                }
+            }
+            System.out.printf("Day %d: %d\n", day+1, studentPresenceCount);
+        }
+
     }
 
 }
