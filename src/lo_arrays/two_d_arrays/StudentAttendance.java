@@ -55,6 +55,14 @@ public class StudentAttendance {
                 {1, 1, 0, 0, 1}
         };
 
+        // display the student attendance report
+        for (student = 0; student < TOTAL_STUDENTS; student++) {
+            for (day = 0; day < TOTAL_DAYS; day++) {
+                System.out.print(attendance2[student][day] + " ");
+            }
+            System.out.println();
+        }
+
         // student presence count i.e. row count
         int studentPresenceCount ;
         for (student = 0; student < TOTAL_STUDENTS; student++) {
