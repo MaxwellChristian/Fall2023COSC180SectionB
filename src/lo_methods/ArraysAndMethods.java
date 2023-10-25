@@ -25,6 +25,20 @@ public class ArraysAndMethods {
             System.out.println("Array does not contain 12");
         }
 
+        // write a method which will return the position where a
+        // value is found in the array
+
+    }
+
+    private static boolean checkInArray(int[] values, int valueTocheck) {
+
+        for( int position = 0 ; position < values.length ; position++ ){
+            if( values[position] == valueTocheck ){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static int[] generateRandomArray(int totalValuesToGenerate, int maxValueRequired) {
