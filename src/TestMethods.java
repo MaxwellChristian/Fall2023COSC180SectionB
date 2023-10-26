@@ -40,11 +40,30 @@ public class TestMethods {
 
         // check whether a value exists in the set
         // complete using a user-defined method from your own library class
+        boolean found = MyMethods.exists(values, 3);
+        System.out.println("3 exists in values: " + found);
+
+        // fetch the index where a value exists in the set
+        int indexAt = MyMethods.indexOf(3, values, 0, values.length);
+        if( indexAt != -1 ){
+            System.out.println("3 found at position: " + indexAt);
+        }
+        else {
+            System.out.println("3 does not exist in the values");
+        }
 
         // count the occurrences of a value from the set
         // complete using a user-defined method from your own library class
+        int count = MyMethods.count(values, 3);
+        System.out.println("3 occurs " + count + " times");
 
         // write a method to display a 2D array
+        int [][]values2D = {
+                {1, 2, 3},
+                {10, 20},
+                {33, 55, 77, 88}
+        };
+        MyMethods.showValues(values2D);
 
     }
 

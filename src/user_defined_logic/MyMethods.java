@@ -74,4 +74,50 @@ public class MyMethods {
 
         return values;
     }
+
+    public static boolean exists(int[] values, int valueToCheck) {
+
+        for( int currentValue: values ){
+            if( currentValue == valueToCheck ){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static int count(int[] values, int valueToCount) {
+
+        int count = 0;
+
+        for( int currentValue: values ){
+            if( currentValue == valueToCount ){
+                count++;
+            }
+        }
+
+//        int startIndex = -1 ;
+//        while( (startIndex = indexOf(valueToCount, values, startIndex+1, values.length)) != -1 ){
+//            count++;
+//        }
+
+        return count;
+    }
+
+    public static void showValues(int[][] values) {
+        for( int row = 0 ; row < values.length ; row++ ){
+            System.out.println(Arrays.toString(values[row]));
+        }
+    }
+
+    public static int indexOf(int valueToCheck, int[] values, int startIndex, int endIndex) {
+
+        for( int index = startIndex ; index < endIndex ; index++ ){
+            if( values[index] == valueToCheck ){
+                return index;
+            }
+        }
+
+        return -1;
+    }
 }
