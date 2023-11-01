@@ -3,6 +3,19 @@ package user_defined_logic;
 import java.util.Arrays;
 
 public class MyMethods {
+
+
+    private static void test(){}
+    private static void test(int x){}
+
+    private static void test(int x, int y){}
+    private static void test(char x, char y){}
+    private static void test(int x, char y){}
+    private static void test(char x, int y){}
+
+    // the following is not permitted as it has change only in the return type
+    // private static int test(char x, int y){}
+
     public static int[] generateValues(int totalValuesRequired, int maxValuePermitted) {
 
         int []values = new int[totalValuesRequired];
@@ -12,6 +25,19 @@ public class MyMethods {
         }
 
         return values;
+    }
+
+    public static int[][] generateValues(int rows, int cols, int maxRandomNumber) {
+
+        int [][]matrix = new int[rows][cols];
+
+        for( int r = 0 ; r < rows ; r++ ){
+            for( int c = 0 ; c < cols ; c++ ){
+                matrix[r][c] = (int) (Math.random()*maxRandomNumber);
+            }
+        }
+
+        return matrix;
     }
 
     public static int computeTotal(int[] values) {
@@ -120,4 +146,6 @@ public class MyMethods {
 
         return -1;
     }
+
+
 }

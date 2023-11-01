@@ -65,6 +65,18 @@ public class TestMethods {
         };
         MyMethods.showValues(values2D);
 
+        // use a method which can return a 2D array filled with random values.
+        // the random values should be upto a specific number of the user's choice.
+        int rows = 5;
+        int cols = 3;
+        int maxRandomNumber = 25;
+        int [][]generatedMatrix = MyMethods.generateValues(rows, cols, maxRandomNumber);
+        System.out.println(Arrays.deepToString(generatedMatrix));
+
+        int max = findMax(generatedMatrix);
+        int min = findMin(generatedMatrix);
+
+
     }
 
 }
