@@ -147,5 +147,63 @@ public class MyMethods {
         return -1;
     }
 
+    public static int findMax(int[] values) {
 
+        int max = values[0];
+        for( int index = 1 ; index < values.length ; index++ ){
+            if( values[index] > max ){
+                max = values[index];
+            }
+        }
+
+        return max;
+    }
+
+    public static int findMin(int[] values) {
+
+        int max = values[0];
+        for( int index = 1 ; index < values.length ; index++ ){
+            if( values[index] < max ){
+                max = values[index];
+            }
+        }
+
+        return max;
+    }
+
+    public static int findMax(int[][] generatedMatrix) {
+
+        int max = generatedMatrix[0][0];
+
+        for( int r = 0 ; r < generatedMatrix.length ; r++ ){
+            for( int c = 0 ; c < generatedMatrix[r].length ; c++ ){
+                if( generatedMatrix[r][c] > max ){
+                    max = generatedMatrix[r][c];
+                }
+            }
+        }
+
+        return max;
+
+    }
+
+    public static int findMin(int[][] generatedMatrix) {
+        int min = generatedMatrix[0][0];
+
+        for( int r = 0 ; r < generatedMatrix.length ; r++ ){
+
+            int rowMin = findMin(generatedMatrix[r]);
+            if(  rowMin < min ){
+                min = rowMin;
+            }
+
+        }
+
+        return min;
+    }
+
+
+    public static String convertToBase2(int number) {
+        return Integer.toBinaryString(number);
+    }
 }

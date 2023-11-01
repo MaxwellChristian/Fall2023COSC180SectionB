@@ -7,7 +7,7 @@ public class TestMethods {
     public static void main(String[] args) {
 
         int totalValuesRequired = 10;
-        int maxValuePermitted = 15;
+        int maxValuePermitted = -15;
 
         int []values = MyMethods.generateValues(totalValuesRequired, maxValuePermitted);
         System.out.println(Arrays.toString(values));
@@ -57,6 +57,12 @@ public class TestMethods {
         int count = MyMethods.count(values, 3);
         System.out.println("3 occurs " + count + " times");
 
+        // find max from 1D array
+        System.out.println("Max value: " + MyMethods.findMax(values));
+
+        // find min from 1D array
+        System.out.println("Min value: " + MyMethods.findMin(values));
+
         // write a method to display a 2D array
         int [][]values2D = {
                 {1, 2, 3},
@@ -73,8 +79,16 @@ public class TestMethods {
         int [][]generatedMatrix = MyMethods.generateValues(rows, cols, maxRandomNumber);
         System.out.println(Arrays.deepToString(generatedMatrix));
 
-        int max = findMax(generatedMatrix);
-        int min = findMin(generatedMatrix);
+        int max = MyMethods.findMax(generatedMatrix);
+        System.out.println("Max [2D]: " + max);
+
+        int min = MyMethods.findMin(generatedMatrix);
+        System.out.println("Min [2D]: " + min);
+
+        // convert int to binary
+        System.out.println("Binary of 12: " + MyMethods.convertToBase2(12));
+
+        // convert int to hexa
 
 
     }
