@@ -31,15 +31,30 @@ public class CircleTestObjects {
             cArr[index].setRadius( inputLine.nextDouble() );
 
             // display the area for each circle
-            System.out.printf("Area with %.2f: %.2f\n", cArr[index].getRadius(), cArr[index].getArea());
+            // System.out.printf("Area with %.2f: %.2f\n", cArr[index].getRadius(), cArr[index].getArea());
         }
 
         // re-write this program such that
             // it takes input of 5 radius and then after taking all the input
         // it displays the area for each circle
 
+//        for( index = 0 ; index < cArr.length ; index++ ){
+//            // display the area for each circle
+//            System.out.printf("Area with %.2f: %.2f\n", cArr[index].getRadius(), cArr[index].getArea());
+//        }
+
+        showArea( cArr );
 
 
+    }
+
+    private static void showArea(Circle[] circleObjects) {
+        for( int index = 0 ; index < circleObjects.length ; index++ ){
+            // display the area for each circle
+            System.out.printf("Area with %.2f: %.2f\n",
+                    circleObjects[index].getRadius(),
+                    circleObjects[index].getArea());
+        }
     }
 
 }
