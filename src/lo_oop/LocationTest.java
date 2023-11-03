@@ -17,10 +17,12 @@ public class LocationTest {
             }
         }
 
-        Location location = Location.locateLargest(values);
+        Location returnedLocationObject = Location.locateLargest(values);
 
         System.out.printf("MaxValue %f is at (%d, %d)\n",
-                location.getMaxValue(), location.getRow(), location.getCol());
+                returnedLocationObject.getMaxValue(),
+                returnedLocationObject.getRow(),
+                returnedLocationObject.getCol());
 
     }
 
