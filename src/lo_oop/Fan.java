@@ -22,14 +22,14 @@ along with the string “fan is off” in one combined string.
 
 public class Fan {
 
-    private final int SLOW = 1;
-    private final int MEDIUM = 2;
-    private final int FAST = 3;
+    public static final int SLOW = 1;
+    public static final int MEDIUM = 2;
+    public static final int FAST = 3;
 
-    int speed;
-    boolean on;
-    double radius;
-    String color;
+    private int speed;
+    private boolean on;
+    private double radius;
+    private String color;
 
     public Fan() {
         speed = SLOW;
@@ -50,8 +50,12 @@ public class Fan {
         return on;
     }
 
-    public void setOn(boolean on) {
-        this.on = on;
+    public void turnOn() {
+        this.on = true;
+    }
+
+    public void turnOff() {
+        this.on = false;
     }
 
     public double getRadius() {
