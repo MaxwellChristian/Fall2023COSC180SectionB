@@ -30,4 +30,45 @@ The location of the largest element is 45 at (1, 2)
 
  */
 public class Location {
+
+    private final int row;
+    private final int col;
+    private final double maxValue;
+
+    public Location(int row, int col, double maxValue) {
+        this.row = row;
+        this.col = col;
+        this.maxValue = maxValue;
+    }
+
+    public static Location locateLargest(double[][] values) {
+
+        double maxValue = values[0][0];
+        int row = 0;
+        int col = 0;
+
+        for( int r = 0 ; r < values.length ; r++ ){
+            for( int c = 0; c < values[r].length ; c++ ){
+                if( values[r][c] > maxValue ){
+                    maxValue = values[r][c];
+                    row = r;
+                    col = c;
+                }
+            }
+        }
+
+        return new Location(row, col, maxValue);
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public double getMaxValue() {
+        return maxValue;
+    }
 }
