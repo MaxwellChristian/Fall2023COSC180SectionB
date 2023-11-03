@@ -8,6 +8,16 @@ public class Student {
     private String firstName;
     private String lastName;
 
+    private String []interestedActivities;
+
+    public String[] getInterestedActivities() {
+        return interestedActivities;
+    }
+
+    public void setInterestedActivities(String[] interestedActivities) {
+        this.interestedActivities = interestedActivities;
+    }
+
     public int getId() {
         return id;
     }

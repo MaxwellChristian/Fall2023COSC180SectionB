@@ -1,5 +1,7 @@
 package lo_oop;
 
+import java.util.Arrays;
+
 public class StudentDemo {
 
     public static void main(String []args){
@@ -24,6 +26,11 @@ public class StudentDemo {
         s2.setId(22);
         s2.setEmail("stud2@xyz.com");
 
+        // set student to select the activities he/she is interested in
+        // at most 5 activities
+        s2.setInterestedActivities(new String[]{"Music", "Movies", "Sports"});
+
+        System.out.println("Activities interested: " + Arrays.toString(s2.getInterestedActivities()));
 
     }
 
