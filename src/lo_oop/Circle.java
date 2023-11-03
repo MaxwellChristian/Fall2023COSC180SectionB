@@ -25,6 +25,10 @@ public class Circle {
         return Math.PI * radius * radius;
     }
 
+    public double getRadius() {
+        return radius;
+    }
+
     public void setRadius(double newRadius){
         this.radius = newRadius;
     }
