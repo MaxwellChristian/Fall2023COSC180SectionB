@@ -2,7 +2,7 @@ package lo_oop;
 
 public class PersonName {
 
-    private String firstName;
+    private String firstName;   // first name
     private String lastName;
     private String middleName ;
 

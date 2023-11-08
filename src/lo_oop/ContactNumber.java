@@ -2,7 +2,7 @@ package lo_oop;
 
 public class ContactNumber {
 
-    int countryCode;
+    int countryCode;    // country code
     int areaCode;
     int callingNumber;
 
