@@ -1,6 +1,10 @@
 package lo_inheritance;
 
+import lo_inheritance.vehicles.Car;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ArrayListDemo {
 
@@ -78,10 +82,26 @@ public class ArrayListDemo {
 
         // create an array list to hold words of a string
 
+        // input from user
+        Scanner inputLine = new Scanner(System.in);
+        System.out.print("Enter a line of text: ");
+        String text = inputLine.nextLine();
+
         // the line of text should be taken an input from the user
+        ArrayList<String> alWords = new ArrayList<>(List.of(text.split(" ")));
+        System.out.println("ArrayList of words: " + alWords);
 
         // remove all "the" from the list
+        alWords.removeAll(List.of(new String[]{"the"}));
+        System.out.println("ArrayList of words: " + alWords);
 
+        // Using array list to store objects of user defined class
+        ArrayList<Car> alCars = new ArrayList<>();
+
+        alCars.add(new Car());
+        alCars.add(new Car(100.5, 200.5, 11, "Yellow"));
+
+        System.out.println(alCars);
     }
 
 }
