@@ -78,6 +78,8 @@ public class ArrayListDemo {
 
         // create an array list to hold words of a string
 
+        // the line of text should be taken an input from the user
+
         // remove all "the" from the list
 
     }
