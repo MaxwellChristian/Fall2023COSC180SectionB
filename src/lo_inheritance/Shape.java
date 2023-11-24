@@ -2,6 +2,7 @@ package lo_inheritance;
 
 public class Shape {
 
+    ShapeType type;
     private String color;
 
     public Shape() {
@@ -20,10 +21,19 @@ public class Shape {
         this.color = color;
     }
 
+    public ShapeType getType() {
+        return type;
+    }
+
+    public void setType(ShapeType type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "Shape{" +
-                "color='" + color + '\'' +
+                "type=" + type +
+                ", color='" + color + '\'' +
                 '}';
     }
 }

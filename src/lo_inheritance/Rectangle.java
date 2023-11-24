@@ -30,6 +30,10 @@ public class Rectangle  extends Shape {
         this.height = height;
     }
 
+    public double getArea(){
+        return width * height;
+    }
+
     @Override
     public String toString() {
         return "Rectangle{" +
