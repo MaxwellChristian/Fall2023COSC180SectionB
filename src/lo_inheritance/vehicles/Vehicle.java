@@ -80,7 +80,7 @@ public abstract class Vehicle {
         this.manufacturerName = manufacturerName;
     }
 
-    abstract public void move();
+    public abstract void move();
     // abstract methods cannot have body
     // should be in a base class
     // will have to be override in derived class
