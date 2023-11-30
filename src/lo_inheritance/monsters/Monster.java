@@ -1,8 +1,9 @@
 package lo_inheritance.monsters;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public abstract class Monster {
+public abstract class Monster implements Comparable<Monster>, Comparator<Monster> {
     private int scareFactor, fast;
     private String name;
 
@@ -58,4 +59,13 @@ public abstract class Monster {
         return scareFactor == monster.scareFactor && fast == monster.fast && Objects.equals(name, monster.name);
     }
 
+    @Override
+    public int compareTo(Monster o) {
+        return this.scareFactor - o.scareFactor ;
+    }
+
+    @Override
+    public int compare(Monster m1, Monster m2) {
+        return m1.scareFactor - m2.scareFactor ;
+    }
 }
