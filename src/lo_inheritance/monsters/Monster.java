@@ -1,5 +1,7 @@
 package lo_inheritance.monsters;
 
+import java.util.Objects;
+
 public abstract class Monster {
     private int scareFactor, fast;
     private String name;
@@ -40,11 +42,20 @@ public abstract class Monster {
     }
 
     @Override
-    public boolean equals(Object obOther) {
-        if (obOther instanceof Monster) {
-            return ((Monster) obOther).name.equals(name);
-        }
-        return false;
+    public boolean equals(Object o) {
+
+        // check if current and the parameter object has same reference
+        if (this == o) return true;
+
+        // check if the parameter is not null and
+        // the current object and parameter belongs to the same class
+        if (o == null || getClass() != o.getClass()) return false;
+
+        // type cast to the desired class
+        Monster monster = (Monster) o;
+
+        // compare the required fields
+        return scareFactor == monster.scareFactor && fast == monster.fast && Objects.equals(name, monster.name);
     }
 
 }

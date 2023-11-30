@@ -8,6 +8,7 @@ public class MultiDemo {
 
         B b1 = new B();
 
+
     }
 
 }

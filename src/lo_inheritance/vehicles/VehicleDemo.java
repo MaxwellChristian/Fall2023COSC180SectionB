@@ -22,6 +22,10 @@ public class VehicleDemo {
 
         // this is polymorphism
 
+        EmergencyVehicles ev = new Helicopter();
+
+        // ev = new Car();  // not allowed as Car does not implement EmergencyVehicles
+
     }
 
 }

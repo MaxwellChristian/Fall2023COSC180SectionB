@@ -22,14 +22,60 @@ public class MonsterList
         aMonList.add(new UnDead("Wraith", 89, 7,true));
 
         //Sample problems for ArrayList
-        //How many Undead Monsters?
 
+        //How many Undead Monsters?
+        int totalUndeadMonsters = countUndead(aMonList);
+        System.out.println("Total Undead Monsters: " + totalUndeadMonsters);
 
         //Create a sublist of Deadly monsters
+        ArrayList<Monster> deadlyMonsters = new ArrayList<>();
+        for(Monster monster: aMonList) {
+            if( monster.isDeadly() ){
+                deadlyMonsters.add(monster);
+            }
+        }
 
         //Count the number of flying undead monsters in the List.
+        int totalFlyingUndeadMonsters = countUndead(aMonList, true);
+        System.out.println("Total (flying) Undead Monsters: " + totalFlyingUndeadMonsters);
+
+        EvilEye e1 = new EvilEye("EE1", 10, 11, 12);
+        EvilEye e2 = new EvilEye("EE1", 10, 11, 14);
+
+//        Monster m1 = aMonList.get(0);
+//        Monster m2 = aMonList.get(0);
 
 
+        if( e1.equals(e2) ){
+            System.out.println("Both are same");
+        }
+        else {
+            System.out.println("Both are different");
+        }
 
+    }
+
+    private static int countUndead(ArrayList<Monster> aMonList) {
+
+        int counter = 0;
+        for (Monster monster: aMonList) {
+            if( monster instanceof UnDead ){
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+
+    private static int countUndead(ArrayList<Monster> aMonList, boolean canFly) {
+
+        int counter = 0;
+        for (Monster monster: aMonList) {
+            if( monster instanceof UnDead && ((UnDead) monster).bCanFly ){
+                counter++;
+            }
+        }
+
+        return counter;
     }
 }
