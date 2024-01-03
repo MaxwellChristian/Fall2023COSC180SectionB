@@ -9,6 +9,8 @@ package exception_handling;
 *   - repeat the division for each possible index
 * */
 
+import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Demo2 {
@@ -20,23 +22,42 @@ public class Demo2 {
 
         Scanner inputLine = new Scanner(System.in);
 
-        // input the arr size
-        System.out.print("Enter arr size: ") ;
-        arrSize = inputLine.nextInt();
+        try {
 
-        // create the array as per size
-        arr = new int[arrSize];
+            // input the arr size
+            System.out.print("Enter arr size: ") ;
+            arrSize = inputLine.nextInt();
 
-        // initialize the arr [random values upto 5]
-        for (int i = 0 ; i < arr.length ; i++) {
-            arr[i] = (int) Math.random()%5;
+            // create the array as per size
+            arr = new int[arrSize];
+
+            // initialize the arr [random values upto 5]
+            for (int i = 0 ; i < arr.length ; i++) {
+                arr[i] = new Random().nextInt(5);
+            }
+
+            // divide value at each index by the value at next index
+            for (int i = 0 ; i < arr.length - 2 ; i+=2) {
+
+                try {
+                    int ans = arr[i] / arr[i+1];
+                    System.out.printf("%d / %d: %d\n", arr[i], arr[i+1], ans);
+                } catch ( ArithmeticException ex ) {
+                    System.out.printf("Cannot divide by zero: Skipped : %d / %d\n", arr[i], arr[i+1]);
+                }
+
+            }
+
+            System.out.println("The program execution completed");
+
+        } catch ( NegativeArraySizeException ex ) {
+            System.out.println("Array size must be POSITIVE value");
+        } catch ( InputMismatchException ex ) {
+            System.out.println( "Array size must be a POSITIVE INT value" );
+        } finally {
+            System.out.println("Bye");
         }
 
-        // divide value at each index by the value at next index
-        for (int i = 0 ; i < arr.length ; i+=2) {
-            int ans = arr[i] / arr[i+1];
-            System.out.printf("%d / %d: %d\n", arr[i], arr[i+1], ans);
-        }
 
     }
 
