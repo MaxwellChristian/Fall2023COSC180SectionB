@@ -12,6 +12,8 @@ public class InputMismatchExceptionDemo {
         int ans;
 
         boolean validInput;
+        int attemptCounter = 0 ;
+        final int MAX_ATTEMPTS = 1;
 
         do {
 
@@ -33,14 +35,16 @@ public class InputMismatchExceptionDemo {
                 // System.out.println("Please provide only INT values");
                 System.out.println(customEx.getMessage());
                 validInput = false;
+                attemptCounter++;
             }
 
-        } while (!validInput);
+        } while (!validInput && attemptCounter <= MAX_ATTEMPTS);
 
 
     }
 
     private static int captureInt() throws MyCustomException {
+
         try {
             Scanner inputLine = new Scanner(System.in);
             return inputLine.nextInt();
