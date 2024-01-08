@@ -30,37 +30,24 @@ public class FileCreationDemo {
             System.out.print("Create File[1] or Directory[2]: ");
             int fileType = inputLine.nextInt();
 
-            File fObj = new File(path + "/" + fileName);
-
             switch (fileType) {
                 case CREATE_FILE:
 
-                    if( fObj.exists() ){
-                        System.out.println("File already exists");
+                    try {
+                        createFile(path + File.separator + fileName);
+                        System.out.println("File created");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
                     }
-                    else {
-                        try {
-                            if (fObj.createNewFile()) {
-                                System.out.println("File created");
-                            } else {
-                                System.out.println("File creation failed");
-                            }
-                        } catch (IOException e) {
-                            System.out.println("Oops. Something went wrong when creating the file");
-                        }
-                    }
+
                     break;
                 case CREATE_DIR:
 
-                    if( fObj.exists() ){
-                        System.out.println("Directory already exists");
-                    }
-                    else {
-                        if (fObj.mkdir()) {
-                            System.out.println("Directory created");
-                        } else {
-                            System.out.println("Directory creation failed");
-                        }
+                    try {
+                        createDirectory(path + File.separator + fileName);
+                        System.out.println("File created");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
                     }
 
                     break;
@@ -70,6 +57,34 @@ public class FileCreationDemo {
             System.out.println("Please provide the name as single word and then a valid int for the file type");
         }
 
+
+    }
+
+    private static void createDirectory(String filePath) throws IOException {
+
+        File fileObj = new File(filePath);
+
+        if( ! fileObj.exists() ){
+            if( ! new File(filePath).mkdir() ){
+                throw new IOException("Directory creation failed");
+            }
+        } else {
+            throw new IOException("Directory already exists");
+        }
+
+    }
+
+    private static void createFile(String filePath) throws IOException {
+
+        File fileObj = new File(filePath);
+
+        if( ! fileObj.exists() ){
+            if( ! new File(filePath).createNewFile() ){
+                throw new IOException("File creation failed");
+            }
+        } else {
+            throw new IOException("File already exists");
+        }
 
     }
 
