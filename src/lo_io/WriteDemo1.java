@@ -19,9 +19,15 @@ public class WriteDemo1 {
             PrintWriter printWriter = new PrintWriter(fObj);
 
             // save/write the data using the writer
-            printWriter.println("Welcome");
-            printWriter.println(57);
-            printWriter.println('A');
+            printWriter.print("Welcome");
+            printWriter.print(", ");
+
+            printWriter.print(57);
+            printWriter.print(", ");
+
+            printWriter.print('A');
+            printWriter.print(", ");
+
             printWriter.println(89.21);
 
             // close the file
