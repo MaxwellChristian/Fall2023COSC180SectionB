@@ -10,6 +10,7 @@ package lo_io;
 * */
 
 import java.io.File;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ShowDirContents {
@@ -27,7 +28,22 @@ public class ShowDirContents {
 
         File[] files = fObj.listFiles();
         for (File curFile: files){
-            System.out.println(curFile.getAbsolutePath());
+            if( curFile.isDirectory() ){
+                System.out.print("D");
+            }
+            else {
+                if( curFile.isFile() ){
+                    System.out.print("F");
+                }
+            }
+
+            if( ! curFile.canWrite() ){
+                System.out.print("R");
+            }
+
+            System.out.print(" " + curFile.getAbsolutePath() + " ");
+
+            System.out.println( new Date(curFile.lastModified()));
         }
     }
 
