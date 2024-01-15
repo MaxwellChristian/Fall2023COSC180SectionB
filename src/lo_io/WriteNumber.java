@@ -12,45 +12,44 @@ public class WriteNumber {
 
     public static void main(String[] args) {
 
-        try (RandomAccessFile rafFile = new RandomAccessFile("data_files/random_file", "rw")) {
+        // creating a file for random access
+        try (RandomAccessFile raf = new RandomAccessFile("data_files/random_file", "rw")) {
 
-            for (int counter = 1; counter <= 10; counter++) {
-                rafFile.writeInt(new Random().nextInt(1000));
+            // length of the file
+            System.out.println("File Length : " + raf.length());
+
+            // write an int to the file
+            raf.writeInt(57);
+
+            // length of the file
+            System.out.println("File Length : " + raf.length());
+
+            // add 9 int values to the file
+            for( int i = 1 ; i <= 8 ; i++ ){
+                raf.writeInt(new Random().nextInt(1000));
             }
 
-            System.out.println("Length of the file: " + rafFile.length());
+            // length of the file
+            System.out.println("File Length : " + raf.length());
 
-            // read and display the first number from the file
-            rafFile.seek(0);
-            System.out.println("First number: " + rafFile.readInt());
+            // append an int value to the file
+            raf.writeInt(9090);
 
-            // read and display the seventh number from the file
-            rafFile.seek(6 * 4);
-            System.out.println("Seventh number: " + rafFile.readInt());
+            // length of the file
+            System.out.println("File Length : " + raf.length());
 
-            // change the seventh number to 77
-            rafFile.seek(6 * 4);
-            rafFile.writeInt(77);
+            // jump to the start of the file
+            raf.seek(0);
 
-            // change the first number to 11
-            rafFile.seek(0);
-            rafFile.writeInt(11);
+            // read the int value from the file
+            System.out.println("Int value at pos 0: " + raf.readInt());
 
-            // read and display the first number from the file
-            rafFile.seek(0);
-            System.out.println("First number: " + rafFile.readInt());
+            // display the 7th int value from the file
+            raf.seek( 6 * 4);
+            System.out.println("Int value at pos 7 (6*4): " + raf.readInt());
 
-            // read and display the seventh number from the file
-            rafFile.seek(6 * 4);
-            System.out.println("Seventh number: " + rafFile.readInt());
+            // display the 3rd int value from the file
 
-            // append 99 to the file
-                // jump to the end of the file
-            rafFile.seek(10 * 4);
-                // append the required number
-            rafFile.writeInt(99);
-
-            // display the last number
 
         } catch (IOException e) {
             throw new RuntimeException(e);
