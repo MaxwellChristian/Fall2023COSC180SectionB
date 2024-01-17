@@ -2,35 +2,46 @@ package lo_recursion;
 
 public class Factorial {
 
-    public static void main(String []args) {
+    public static void main(String[] args) {
 
-        int num = Integer.parseInt(args[0]);
+        try {
+            System.out.println("Factorial of "
+                    + Integer.parseInt(args[0])
+                    + " : "
+                    + factorialR(Integer.parseInt(args[0])));
 
-        int fact = factorial(num);
-
-        System.out.println("Factorial of " + num +  " : " + fact);
-
-    }
-
-    private static int factorial(int num) {
-
-        int ans;
-        for( ans = 1; num > 1 ; num-- ){
-            ans = ans * num;
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.out.println("Provide an int as command line argument");
+        } catch (NumberFormatException exception) {
+            System.out.println("Only int values permitted as command line argument");
+        } catch (Exception exception) {
+            System.out.println("An exception generated: " + exception.getMessage());
+        } catch (Error error) {
+            System.out.println("An error generated: " + error);
         }
 
-        return ans;
     }
 
-    private static int factorialR(int num) {
+    private static int factorialR(int num) throws Error {
 
         // stop case
-        if( num == 1 ){
+        if (num == 1) {
             return 1;
         } else {
-            return num * factorialR(num-1);
+            return num * factorialR(num - 1);
         }
 
     }
+
+
+//    private static int factorial(int num) {
+//
+//        int ans;
+//        for( ans = 1; num > 1 ; num-- ){
+//            ans = ans * num;
+//        }
+//
+//        return ans;
+//    }
 
 }

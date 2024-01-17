@@ -9,6 +9,18 @@ public class Sum1ToN {
 
     public static void main(String []args) {
 
+        try {
+
+            System.out.println("Sum : " + sum(Integer.parseInt(args[0])));
+
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+
+    }
+
+    private static int sum(int num) {
+        return (num == 1) ? 1 : (num + sum(num-1));
     }
 
 }
