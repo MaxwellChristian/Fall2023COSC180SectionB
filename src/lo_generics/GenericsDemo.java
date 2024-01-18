@@ -1,6 +1,7 @@
 package lo_generics;
 
 import lo_inheritance.Circle;
+import lo_inheritance.Rectangle;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,12 @@ public class GenericsDemo {
         System.out.println("Min : " + GenericMethods.smallest(iValues));
         System.out.println("Min : " + GenericMethods.smallest(sValues));
         System.out.println("Min : " + GenericMethods.smallest(cValues));
+
+        if(GenericMethods.compareShapes(cValues[0], new Rectangle())){
+            System.out.println("Both are same");
+        } else {
+            System.out.println("Both are Not same");
+        }
 
     }
 
