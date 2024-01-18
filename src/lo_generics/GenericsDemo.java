@@ -2,10 +2,17 @@ package lo_generics;
 
 import lo_inheritance.Circle;
 
+import java.util.ArrayList;
+
 public class GenericsDemo {
 
     public static void main(String []args) {
 
+
+//        ArrayList<Integer> alNumbers = new ArrayList<>();
+//        alNumbers.add(20);
+//        alNumbers.add("20");
+//
 
         Integer []iValues = {11, 22, 33, 44, 55};
         String []sValues = {"AA", "BB", "CC"};
@@ -26,17 +33,24 @@ public class GenericsDemo {
 
         showValues(cValues);
 
-        largest(iValues);
-        largest(sValues);
-        largest(cValues);
+        System.out.println("Max : " + largest(iValues));
+        System.out.println("Max : " + largest(sValues));
+        System.out.println("Max : " + largest(cValues));
+
+        System.out.println("Min : " + GenericMethods.smallest(iValues));
+        System.out.println("Min : " + GenericMethods.smallest(sValues));
+        System.out.println("Min : " + GenericMethods.smallest(cValues));
 
     }
 
-    private static Integer largest(Integer []values) {
+    // <T> return_type method_name(T parameter) { }
+    // <E> return_type method_name(E parameter) { }
 
-        Integer max = values[0];
+    private static <T extends Comparable<T> > T largest(T []values) {
+
+        T max = values[0];
         for( int i = 1 ; i  < values.length ; i++ ){
-            if( values[i] > max ){
+            if( values[i].compareTo(max) > 0 ){
                 max = values[i];
             }
         }

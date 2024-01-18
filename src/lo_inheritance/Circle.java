@@ -1,6 +1,6 @@
 package lo_inheritance;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Comparable<Circle> {
 
     private double radius;
 
@@ -34,5 +34,10 @@ public class Circle extends Shape {
         return "Circle{" +
                 "radius=" + radius +
                 "} " + super.toString();
+    }
+
+    @Override
+    public int compareTo(Circle o) {
+        return (int) (this.radius - o.radius);
     }
 }
