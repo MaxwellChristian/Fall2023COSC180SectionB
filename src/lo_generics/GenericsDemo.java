@@ -24,8 +24,24 @@ public class GenericsDemo {
         cValues[1] = new Circle(22);
         cValues[2] = new Circle(33);
 
+        showValues(cValues);
 
+        largest(iValues);
+        largest(sValues);
+        largest(cValues);
 
+    }
+
+    private static Integer largest(Integer []values) {
+
+        Integer max = values[0];
+        for( int i = 1 ; i  < values.length ; i++ ){
+            if( values[i] > max ){
+                max = values[i];
+            }
+        }
+
+        return max;
     }
 
     private static void showTextValues(String[] values) {

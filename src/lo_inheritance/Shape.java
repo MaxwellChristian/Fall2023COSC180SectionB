@@ -6,7 +6,7 @@ public class Shape {
     private String color;
 
     public Shape() {
-        System.out.println("Shape()");
+//        System.out.println("Shape()");
     }
 
     public Shape(String color) {
