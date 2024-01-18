@@ -7,6 +7,7 @@ public class GenericStack<G> {
     private ArrayList<G> list;
 
     public GenericStack() {
+        list = new ArrayList<>();
     }
 
     public int getSize() {
@@ -17,8 +18,12 @@ public class GenericStack<G> {
         return list.isEmpty();
     }
 
-    public void push(G object) {
-        list.add(object);
+    public void push(G object) throws Exception {
+        if( list != null ){
+            list.add(object);
+        } else {
+            throw new NullPointerException("List is empty");
+        }
     }
 
     public G pop() {
