@@ -2,12 +2,7 @@ package lo_sorting;
 
 import java.util.Arrays;
 
-/*
-* Re-write/modify the code to show the output after each pass.
-* Also, write a new recursive method for selection sort.
-* */
-
-public class SelectionSortDemo {
+public class InsertionSortDemo {
 
     public static void main(String []args) {
 
@@ -15,7 +10,7 @@ public class SelectionSortDemo {
 
         System.out.println(Arrays.toString(values));
 
-        SortingMethods.selectionSort(values);
+        SortingMethods.insertionSort(values, values.length);
 
         System.out.println(Arrays.toString(values));
 
