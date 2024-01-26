@@ -1,5 +1,7 @@
 package lo_sorting;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SortingMethods {
@@ -112,17 +114,27 @@ public class SortingMethods {
         if (values.length > 1) {
 
             // merge sort the left half of the list
-            T[] leftList = new T[values.length / 2];
+            //T[] leftList = new T[values.length / 2];
+            T []leftList = (T[]) Array.newInstance(values.getClass(), values.length / 2);
             System.arraycopy(values, 0, leftList, 0, values.length / 2);
+
+            ArrayList<T> al = new ArrayList<>();
+
+            int index = 0;
+            while (index < values.length/2){
+                al.add(values[index++]);
+            }
+
+
             mergeSort(leftList);
 
             // merge sort the second half of the list
-            T[] rightList = new T[values.length - values.length / 2];
-            System.arraycopy(values, values.length / 2, rightList, 0, (values.length - values.length / 2));
-            mergeSort(rightList);
+//            T[] rightList = new T[values.length - values.length / 2];
+//            System.arraycopy(values, values.length / 2, rightList, 0, (values.length - values.length / 2));
+//            mergeSort(rightList);
 
             // merge first and second halves into a single list
-            merge(leftList, rightList, values);
+//            merge(leftList, rightList, values);
         }
 
     }
