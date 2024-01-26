@@ -106,18 +106,18 @@ public class SortingMethods {
 
     }
 
-    public static void mergeSort(int[] values) {
+    public static <T extends Comparable<T>> void mergeSort(T[] values) {
 
         // base case
         if (values.length > 1) {
 
             // merge sort the left half of the list
-            int[] leftList = new int[values.length / 2];
+            T[] leftList = new T[values.length / 2];
             System.arraycopy(values, 0, leftList, 0, values.length / 2);
             mergeSort(leftList);
 
             // merge sort the second half of the list
-            int[] rightList = new int[values.length - values.length / 2];
+            T[] rightList = new T[values.length - values.length / 2];
             System.arraycopy(values, values.length / 2, rightList, 0, (values.length - values.length / 2));
             mergeSort(rightList);
 
@@ -127,7 +127,7 @@ public class SortingMethods {
 
     }
 
-    private static void merge(int[] leftList, int[] rightList, int[] finalList) {
+    private static <T extends Comparable<T>> void merge(T[] leftList, T[] rightList, T[] finalList) {
 
         int currentLeft = 0;
         int currentRight = 0;
@@ -137,7 +137,7 @@ public class SortingMethods {
         while (currentLeft < leftList.length && currentRight < rightList.length) {
 
             // copy the smaller value to the final list
-            if (leftList[currentLeft] < rightList[currentRight]) {
+            if ( leftList[currentLeft].compareTo(rightList[currentRight]) < 0 ) {
                 finalList[currentFinal++] = leftList[currentLeft++];
             } else {
                 finalList[currentFinal++] = rightList[currentRight++];
