@@ -40,16 +40,63 @@ public class MyList<T> {
     // [recursive] remove and return the first node of the list
     public T dequeue(){
 
-        return null;
+        if( head == null ){
+            return null;
+        } else {
+            T retNode = this.head.getData();
+
+            this.head = this.head.getNext();
+
+            return retNode;
+        }
+
     }
 
     // [recursive] return the node which contains the data. Return null if not fount
     public T find(T dataToFind) {
-        return dataToFind;
+        if( isEmpty() ){
+            return null;
+        } else {
+            return find(this.head, dataToFind);
+        }
+    }
+
+    private T find(MyNode<T> current, T dataToFind) {
+
+        // base case
+        if( current == null ){
+            return null;
+        }
+
+        if( current.getData() == dataToFind ){
+            return current.getData();
+        }
+
+        return find(current.getNext(), dataToFind);
+    }
+
+    private boolean isEmpty() {
+        return head == null;
     }
 
     // [recursive] remove the data from the list
     public void remove(T dataToRemove){
+        if( ! isEmpty() ){
+            this.head = remove(this.head, dataToRemove);
+        }
+    }
 
+    private MyNode<T> remove(MyNode<T> current, T dataToRemove) {
+
+        if( current == null ){
+            return null;
+        }
+
+        if( current.getData().equals(dataToRemove) ){
+            return current.getNext();
+        }
+
+        current.setNext(remove(current.getNext(), dataToRemove));
+        return current;
     }
 }
