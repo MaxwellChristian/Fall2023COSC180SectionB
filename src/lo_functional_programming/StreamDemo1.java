@@ -1,7 +1,5 @@
 package lo_functional_programming;
 
-import lo_inheritance.multi_level.A;
-
 import java.util.Arrays;
 
 public class StreamDemo1 {
@@ -20,6 +18,18 @@ public class StreamDemo1 {
 
         int[] alValuesL50 = Arrays.stream(values).filter(value -> value > 50).toArray();
         System.out.println("Values > 50: " + Arrays.toString(alValuesL50));
+
+        // count of values
+        System.out.println("Count: " + Arrays.stream(values).count());
+
+        // min value
+        System.out.println("Min: " + Arrays.stream(values).min().getAsInt());
+
+        // max value
+        System.out.println("Max: " + Arrays.stream(values).max().getAsInt());
+
+        // average value
+        System.out.println("Average: " + Arrays.stream(values).average().getAsDouble());
 
         String[] words = "welcome to the test of JAVA As JAVA is always easy to test".split(" ");
         System.out.println("Words: " + Arrays.toString(words));
