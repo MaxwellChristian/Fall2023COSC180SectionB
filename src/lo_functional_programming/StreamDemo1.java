@@ -56,6 +56,22 @@ public class StreamDemo1 {
                         .toList()
         );
 
+        // display all words sorted [ignoring the case and not using the first 4 words]
+
+        // get the largest word with length >= 3
+
+        // get the smallest word [alphabetically smallest]
+
+        // check and return the status of whether all names start with a capital alphabet
+
+        // check and return the status where no word begins with JA
+
+        // get the first element in the stream
+
+        // display the first element of the stream in lowercase
+
+        // write a method which takes words as parameters and returns an array consisting of all words in lowercase
+
     }
 
 }
