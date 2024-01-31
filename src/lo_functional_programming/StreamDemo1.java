@@ -1,11 +1,12 @@
 package lo_functional_programming;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class StreamDemo1 {
 
     public static void main(String[] args) {
-
 
         int[] values = {12, 19, 2394, 28, 95, 194, 11, 51};
 
