@@ -24,7 +24,7 @@ public class BattleShip {
     public BattleShip(String []values) {
 
         this.name = values[BattleShipConstants.INDEX_NAME].trim();
-        this.operatingNavy = values[BattleShipConstants.INDEX_NAVY].trim();
+        this.operatingNavy = values[BattleShipConstants.INDEX_NAVY].trim().replaceAll("[^A-Za-z\\s]", "");
         this.type = values[BattleShipConstants.INDEX_TYPE].trim();
         this.displacement = Long.parseLong(values[BattleShipConstants.INDEX_DISPLACEMENT].trim().replace(",", ""));
 
