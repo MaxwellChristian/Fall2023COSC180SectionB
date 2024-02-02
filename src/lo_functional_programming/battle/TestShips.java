@@ -1,13 +1,8 @@
 package lo_functional_programming.battle;
 
-import jdk.jshell.execution.Util;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
