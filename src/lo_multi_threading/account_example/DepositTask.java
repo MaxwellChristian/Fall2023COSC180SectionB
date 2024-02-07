@@ -13,8 +13,14 @@ public class DepositTask implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep((long) (Math.random()*2000));
-            account.deposit(amountToDeposit);
+            // account.deposit(amountToDeposit);    // non-synchronized method
+            // account.depositV2(amountToDeposit);  // synchronized method
+
+            // another approach to synchronization
+            synchronized (account){
+                account.deposit(amountToDeposit); // non-synchronized method
+            }
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
