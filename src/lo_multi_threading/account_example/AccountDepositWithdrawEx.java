@@ -2,6 +2,7 @@ package lo_multi_threading.account_example;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -23,6 +24,7 @@ public class AccountDepositWithdrawEx {
     public static class Account {
 
         private static final Lock lock = new ReentrantLock();
+        private static Condition depositDone = lock.newCondition();
 
         private double balance = 0;
 
@@ -38,11 +40,14 @@ public class AccountDepositWithdrawEx {
 
                 while (balance < amount) {
                     System.out.println("Wait for deposit");
+                    depositDone.await();
                 }
 
                 balance -= amount;
                 System.out.println("Withdraw: " + amount + ", Balance: " + getBalance());
 
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             } finally {
                 lock.unlock();
             }
@@ -56,6 +61,7 @@ public class AccountDepositWithdrawEx {
                 this.balance += amount;
                 System.out.println("Deposit: " + amount + ", Balance: " + getBalance());
 
+                depositDone.signalAll();
             } finally {
                 lock.unlock();
             }
