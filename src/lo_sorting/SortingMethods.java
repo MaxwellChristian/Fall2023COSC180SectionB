@@ -139,7 +139,7 @@ public class SortingMethods {
 
     }
 
-    private static <T extends Comparable<T>> void merge(T[] leftList, T[] rightList, T[] finalList) {
+    public static <T extends Comparable<T>> void merge(T[] leftList, T[] rightList, T[] finalList) {
 
         int currentLeft = 0;
         int currentRight = 0;

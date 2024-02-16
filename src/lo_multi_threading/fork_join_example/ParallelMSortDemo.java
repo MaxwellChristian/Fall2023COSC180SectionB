@@ -1,6 +1,7 @@
 package lo_multi_threading.fork_join_example;
 
 import lo_sorting.MergeSortDemo;
+import lo_sorting.SortingMethods;
 import org.junit.runners.model.TestTimedOutException;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ public class ParallelMSortDemo {
     public static void main(String[] args) {
 
         final int TOTAL_VALUES = 7000000;
-        int[] values1 = new int[TOTAL_VALUES];
+        Integer[] values1 = new Integer[TOTAL_VALUES];
         int[] values2 = new int[TOTAL_VALUES];
 
         // generate random values and fill in both arrays
@@ -31,7 +32,7 @@ public class ParallelMSortDemo {
 
     }
 
-    private static void parallelMergeSort(int[] values) {
+    private static void parallelMergeSort(Integer[] values) {
         ForkJoinPool pool = new ForkJoinPool();
 
         RecursiveAction task = new SortingTask(values);
@@ -40,12 +41,12 @@ public class ParallelMSortDemo {
     }
 
     private static class SortingTask extends RecursiveAction {
-        private final int[] values;
+        private final Integer[] values;
 
         // sorts 200 values in parallel
         private final int MAX_VALUES_TO_SORT_IN_PARALLEL = 200;
 
-        public SortingTask(int[] values) {
+        public SortingTask(Integer[] values) {
             this.values = values;
         }
 
@@ -61,19 +62,20 @@ public class ParallelMSortDemo {
                 // split in two parts
 
                 // the left part
-                int[] leftPart = new int[values.length / 2];
+                Integer[] leftPart = new Integer[values.length / 2];
                 System.arraycopy(this.values, 0, leftPart, 0, this.values.length / 2);
 
                 // the right part
                 int rightLength = values.length - values.length / 2;
-                int[] rightPart = new int[rightLength];
+                Integer[] rightPart = new Integer[rightLength];
                 System.arraycopy(this.values, values.length/2, rightPart, 0, rightLength);
 
                 // recursively sort
                 invokeAll(new SortingTask(leftPart), new SortingTask(rightPart));
 
                 // merge both parts
-                MergeSortDemo.merge(leftPart, rightPart, values);
+                // MergeSortDemo.merge(leftPart, rightPart, values);
+                SortingMethods.merge(leftPart, rightPart, values);
 
             }
 
