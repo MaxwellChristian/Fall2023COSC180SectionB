@@ -1,12 +1,14 @@
 package gui;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ComboDemo extends Application {
@@ -26,7 +28,6 @@ public class ComboDemo extends Application {
 
         imgDice = new ImageView();
 
-
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.getItems().addAll(diceNames);
 
@@ -38,9 +39,12 @@ public class ComboDemo extends Application {
         comboBox.setOnAction(actionEvent -> displayItem(comboBox.getSelectionModel().getSelectedIndex()));
         comboBox.getSelectionModel().select(1);
 
+        HBox hBox = new HBox(10);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().addAll(new Label("Select a dice: "), comboBox);
+
         BorderPane borderPane = new BorderPane();
-        borderPane.setLeft(new Label("Select a dice: "));
-        borderPane.setTop(comboBox);
+        borderPane.setTop(hBox);
         borderPane.setCenter(imgDice);
 
 //        displayItem(0);
