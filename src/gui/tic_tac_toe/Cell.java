@@ -13,9 +13,9 @@ public class Cell extends Pane {
         this.setOnMouseClicked(mouseEvent -> handleMouseClick());
     }
 
-    private void handleMouseClick() {
+    public void handleMouseClick() {
         if( displaySymbol == ' ' ){
-            setDisplaySymbol('X');
+            setDisplaySymbol(this.displaySymbol);
         }
     }
 
