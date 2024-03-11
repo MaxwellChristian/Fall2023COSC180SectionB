@@ -1,6 +1,7 @@
 package gui.clock_demo;
 
-import javafx.application.Platform;
+
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -10,11 +11,13 @@ import javafx.scene.text.Text;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+
 public class ClockPane extends Pane {
 
     private int hour;
     private int minutes;
     private int seconds;
+    private Label lbl = new Label("");
 
     public ClockPane() {
         setCurrentTime();
@@ -24,6 +27,10 @@ public class ClockPane extends Pane {
         this.hour = hour;
         this.minutes = minutes;
         this.seconds = seconds;
+    }
+
+    public ClockPane(Label lbl) {
+        this.lbl = lbl;
     }
 
     public int getHour() {
@@ -108,8 +115,7 @@ public class ClockPane extends Pane {
         getChildren().clear();
         getChildren().addAll(circle, t1, t2, t3, t4, sLine, mLine, hLine);
 
-        new Thread(() -> Platform.runLater(this::setCurrentTime)).start();
-
+//        new Thread(() -> Platform.runLater(this::setCurrentTime)).start();
     }
 
     @Override
@@ -122,5 +128,16 @@ public class ClockPane extends Pane {
     protected void setHeight(double value) {
         super.setHeight(value);
         layoutChildren();
+    }
+
+    public String getCurrentTime() {
+        Calendar calendar = new GregorianCalendar();
+
+        this.hour = calendar.get(Calendar.HOUR_OF_DAY);
+        this.minutes = calendar.get(Calendar.MINUTE);
+        this.seconds = calendar.get(Calendar.SECOND);
+
+        return this.getHour() + ":" + this.getMinutes()
+                + ":" + this.getSeconds();
     }
 }
