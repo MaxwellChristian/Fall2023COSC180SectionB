@@ -1,5 +1,6 @@
 package gui.clock_demo;
 
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -80,9 +81,9 @@ public class ClockPane extends Pane {
         // the second hand
         double sLength = clockRadius * 0.8;
         double secondX = centerX + sLength *
-                -Math.sin(seconds * (2 * Math.PI / 60));
+                Math.sin(seconds * (2 * Math.PI / 60));
         double secondY = centerY - sLength *
-                -Math.cos(seconds * (2 * Math.PI / 60));
+                Math.cos(seconds * (2 * Math.PI / 60));
         Line sLine = new Line(centerX, centerY, secondX, secondY);
         sLine.setStroke(Color.RED);
 
@@ -106,6 +107,9 @@ public class ClockPane extends Pane {
 
         getChildren().clear();
         getChildren().addAll(circle, t1, t2, t3, t4, sLine, mLine, hLine);
+
+        new Thread(() -> Platform.runLater(this::setCurrentTime)).start();
+
     }
 
     @Override
