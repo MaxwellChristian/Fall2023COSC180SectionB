@@ -7,6 +7,7 @@ package lo_networking;
 * */
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Scanner;
@@ -32,10 +33,17 @@ public class StudentClient {
             ObjectOutputStream outputStreamToServer = new ObjectOutputStream(connectionToServer.getOutputStream());
             outputStreamToServer.writeObject(studentToSend);
 
+            // get the status from the server
+            ObjectInputStream inputStreamFromServer =
+                    new ObjectInputStream(connectionToServer.getInputStream());
+            System.out.println("Server says: " + inputStreamFromServer.readObject());
+
             // close the connection
             connectionToServer.close();
 
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 

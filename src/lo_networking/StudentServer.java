@@ -7,8 +7,10 @@ package lo_networking;
 * [student data is shared using objects]
 * */
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -18,13 +20,16 @@ public class StudentServer {
     public static void main(String ... args) {
 
         int serverPort = Integer.parseInt(args[0]);
+        ObjectOutputStream objectOutputStreamToFile = null;
 
         try {
+            objectOutputStreamToFile = new ObjectOutputStream(new FileOutputStream("data_files/student_data.txt", true));
+
             ServerSocket serverSocket = new ServerSocket(serverPort);
             System.out.println("Server started at " + new Date());
             System.out.println("Server providing service at port: " + serverPort);
 
-            while (true){
+            while (true) {
                 System.out.println("Waiting for client");
 
                 Socket connectedClient = serverSocket.accept();
@@ -47,6 +52,13 @@ public class StudentServer {
                 // [the name/path of the file is assumed to be fixed]
                 // data_files/student_data.txt
 
+                objectOutputStreamToFile.writeObject(studentReceived);
+                System.out.print("Student data stored to file");
+
+                ObjectOutputStream outputStreamToClient =
+                        new ObjectOutputStream(connectedClient.getOutputStream());
+                outputStreamToClient.writeObject(new String("Student data stored successfully"));
+
             }
 
 
@@ -54,6 +66,12 @@ public class StudentServer {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                objectOutputStreamToFile.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
