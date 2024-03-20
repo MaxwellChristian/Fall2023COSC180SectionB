@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -29,10 +30,18 @@ public class StudentClient extends Application {
 
     public static void main(String ... args) {
 
-        serverAddress = args[0];
-        serverPort = Integer.parseInt(args[1]);
+        try {
+            serverAddress = args[0];
+            serverPort = Integer.parseInt(args[1]);
 
-        Application.launch(args);
+             Application.launch(args);
+        }
+        catch (Exception exception) {
+            // showAlert(Alert.AlertType.ERROR, "Exception", exception.toString());
+            System.out.println(exception);
+            throw exception;
+        }
+
     }
 
     @Override
@@ -80,26 +89,50 @@ public class StudentClient extends Application {
 
     private void sendToServer(String serverAddress, int serverPort) {
 
+        Socket connectedServer = null;
+
         try {
             Student studentToSend = getStudent();
 
-            Socket connectedServer = new Socket(serverAddress, serverPort);
+            connectedServer = new Socket(serverAddress, serverPort);
 
             ObjectOutputStream outputStreamToServer =
                     new ObjectOutputStream(connectedServer.getOutputStream());
             outputStreamToServer.writeObject(studentToSend);
 
-            connectedServer.close();
+            // wait for confirmation from the server
+            // then display appropriate message in alert
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Send status");
-            alert.setHeaderText("Send Student");
-            alert.setContentText("Student data sent successfully to server");
-            alert.show();
+            DataInputStream inputStreamFromServer =
+                    new DataInputStream(connectedServer.getInputStream());
+            boolean receiveStatus = inputStreamFromServer.readBoolean();
+
+            if( receiveStatus ){
+                showAlert(Alert.AlertType.INFORMATION, "Send Student", "Student data sent successfully to server");
+            }
+            else {
+                showAlert(Alert.AlertType.ERROR, "Send Student", "Student data sent failed");
+            }
 
         } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR, "Exception", e.getMessage());
             throw new RuntimeException(e);
         }
+        finally {
+            try {
+                connectedServer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private static void showAlert(Alert.AlertType alertType, String header, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle("Alert");
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.show();
     }
 
     private Student getStudent() {

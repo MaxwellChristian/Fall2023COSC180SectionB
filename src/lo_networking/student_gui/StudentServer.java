@@ -7,20 +7,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class StudentServer extends Application {
 
     static int serverPort;
+    private static String filePath;
 
     TextArea textArea;
 
     public static void main(String ... args) {
 
         serverPort = Integer.parseInt(args[0]);
+        filePath = args[1];
 
         Application.launch(args);
     }
@@ -67,6 +68,14 @@ public class StudentServer extends Application {
             while (true) {
 
                 Student receivedStudent = (Student) inputStream.readObject();
+                // save the received object to a file
+                ObjectOutputStream outputStreamToFile =
+                        new ObjectOutputStream(new FileOutputStream(filePath, true));
+                outputStreamToFile.writeObject(receivedStudent);
+
+                DataOutputStream outputStreamToClient =
+                        new DataOutputStream(clientSocket.getOutputStream());
+                outputStreamToClient.writeBoolean(true);
 
                 Platform.runLater(() -> {
                     showMessage("Received student: " + receivedStudent + "\n");
@@ -74,6 +83,15 @@ public class StudentServer extends Application {
 
             }
         } catch (IOException e) {
+
+            try {
+                DataOutputStream outputStreamToClient =
+                        new DataOutputStream(clientSocket.getOutputStream());
+                outputStreamToClient.writeBoolean(false);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
             Platform.runLater(() -> showMessage("Client disconnected: "
                     + clientSocket.getInetAddress()
                     + ", Port" + clientSocket.getPort()
