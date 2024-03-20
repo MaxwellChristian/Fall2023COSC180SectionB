@@ -3,6 +3,7 @@ package lo_networking.student_gui;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -89,6 +90,12 @@ public class StudentClient extends Application {
             outputStreamToServer.writeObject(studentToSend);
 
             connectedServer.close();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Send status");
+            alert.setHeaderText("Send Student");
+            alert.setContentText("Student data sent successfully to server");
+            alert.show();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
