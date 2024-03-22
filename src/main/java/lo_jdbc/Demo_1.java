@@ -5,9 +5,7 @@ package lo_jdbc;
 * To start with, this program connects to Ms-Access.
 * */
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Demo_1 {
 
@@ -23,6 +21,25 @@ public class Demo_1 {
             // connect to database
             Connection connection = DriverManager.getConnection("jdbc:ucanaccess://Students.accdb", "scott", "tiger");
             System.out.println("Database connected");
+
+            // create the operation that you need to perform with the database
+            // here we will fetch some records from the table "students"
+            String query = "SELECT room, level FROM students";
+
+            // to work with database commands, we need to create a 'Statement'
+            Statement statement = connection.createStatement();
+
+            // execute the command using the statement
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // iterate over the received results
+            while (resultSet.next()) {
+                System.out.println("Record traversed");
+            }
+
+            // close the connection
+            connection.close();
+
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
