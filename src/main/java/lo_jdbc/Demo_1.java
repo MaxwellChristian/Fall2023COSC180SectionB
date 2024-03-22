@@ -11,7 +11,6 @@ public class Demo_1 {
 
     public static void main(String []args) {
 
-
         try {
             // load the appropriate driver for the database used
             // i.e., load the class which represents the driver
