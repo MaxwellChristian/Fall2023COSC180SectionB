@@ -58,13 +58,28 @@ public class StudentAttendance {
 //                        "WHERE " +
 //                            "Students.StudentID = StudentAttendance.Student";
 
+//            String sqlQuery =
+//                    "SELECT " +
+//                            fieldList.substring(1, fieldList.length()-1) +
+//                        " FROM " +
+//                            tableList.substring(1, tableList.length()-1) +
+//                        " WHERE " +
+//                            "Students.StudentID = StudentAttendance.Student" +
+//                        " AND " +
+//                            "StudentAttendance.Student = 4"
+//                    ;
+
+            int idToSearch = Integer.parseInt(args[0]);
             String sqlQuery =
                     "SELECT " +
                             fieldList.substring(1, fieldList.length()-1) +
                         " FROM " +
                             tableList.substring(1, tableList.length()-1) +
                         " WHERE " +
-                            "Students.StudentID = StudentAttendance.Student";
+                            "Students.StudentID = StudentAttendance.Student" +
+                        " AND " +
+                            "StudentAttendance.Student = " + idToSearch
+                    ;
 
             ResultSet resultSet;
             System.out.println("SQL to execute: " + sqlQuery);
