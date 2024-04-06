@@ -20,19 +20,19 @@ public class Max2DArray {
 
                 int finalCounter = counter;
 
-                System.out.println(STR."Executing thread: \{counter++}");
+                System.out.println("Executing thread: " + counter++);
                 obPool.execute(() -> {
 
                     int maxFromThread = maxRow(naRow);
 
                     lockSum.lock();
-                    if( maxFromThread > finalMax[0]){
+                    if (maxFromThread > finalMax[0]) {
                         finalMax[0] = maxFromThread;
                     }
                     lockSum.unlock();
 
                     // System.out.println("Thread " + finalCounter + " -> Max: " + maxFromThread);
-                    System.out.println(STR."Thread \{(finalCounter)} -> Max: \{maxFromThread}");
+                    System.out.println("Thread " + finalCounter + " -> Max: " + maxFromThread);
 
                 });
 
@@ -71,7 +71,7 @@ public class Max2DArray {
         };
 
         int maxValue = max(array);
-        System.out.println(STR."Maximum value from 2D array: \{maxValue}");
+        System.out.println("Maximum value from 2D array: " + maxValue);
 
     }
 }

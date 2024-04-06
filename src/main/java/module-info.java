@@ -4,4 +4,6 @@ module Fall2023COSC180SectionB {
     requires java.sql;
 
     exports gui;
+
+    exports _2024_sim_2;
 }
