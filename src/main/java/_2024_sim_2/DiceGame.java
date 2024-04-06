@@ -92,8 +92,8 @@ public class DiceGame extends Application {
         obBox.getChildren().add(obStart);
         obBox.getChildren().add(obAnimate);
 
-        obStart.setOnAction(_ -> showRandomNumbers());
-        obAnimate.setOnAction(_ -> rollDiceAnimation());
+        obStart.setOnAction(e -> showRandomNumbers());
+        obAnimate.setOnAction(e -> rollDiceAnimation());
 
         return obBox;
     }
@@ -109,15 +109,12 @@ public class DiceGame extends Application {
 
             int index = i;
             Timeline timeline = new Timeline(
-new KeyFrame(Duration.ZERO, _ ->
-imageViewDice[index].
-setImage(new Image(STR.
-"file:images/dice/dice_\{random.nextInt(1, TOTAL_DICE_IMAGES + 1)}.png"))),
-new KeyFrame(Duration.millis(delay))
+                    new KeyFrame(Duration.ZERO, e -> imageViewDice[index].setImage(new Image("file:images/dice/dice_" + random.nextInt(1, TOTAL_DICE_IMAGES + 1) + ".png"))),
+                    new KeyFrame(Duration.millis(delay))
             );
 
             // Add an event handler to the timeline to check for completion
-            timeline.setOnFinished(_ -> showNumberImages());
+            timeline.setOnFinished(e -> showNumberImages());
 
             timeline.setCycleCount(TOTAL_DICE_IMAGES); // Repeat cycle for all images
             timeline.play();
@@ -128,10 +125,7 @@ new KeyFrame(Duration.millis(delay))
     private void showNumberImages() {
 
         for (int i = 0; i < TOTAL_DICE_IMAGES_TO_SHOW; i++) {
-imageViewDice[i].
-        setImage(
-                new Image(
-                        STR."file:images/dice/dice_\{lblNumbers[i].getText()}.png"));
+            imageViewDice[i].setImage(new Image("file:images/dice/dice_" + lblNumbers[i].getText() + ".png"));
         }
 
     }
@@ -140,26 +134,26 @@ imageViewDice[i].
 
         Random random = new Random();
 
-        int []randomNumbers = new int[3];
+        int[] randomNumbers = new int[3];
         boolean allNumbersSame = false;
-        for (int i = 0 ; i < randomNumbers.length ; i++ ) {
+        for (int i = 0; i < randomNumbers.length; i++) {
             randomNumbers[i] = random.nextInt(1, 7);
-            if( i > 0 ){
-               allNumbersSame = randomNumbers[i] == randomNumbers[i-1];
+            if (i > 0) {
+                allNumbersSame = randomNumbers[i] == randomNumbers[i - 1];
             }
         }
 
-        if(allNumbersSame){
+        if (allNumbersSame) {
             equalNumberCounter++;
         }
 
-        for (int i = 0 ; i < randomNumbers.length ; i++ ) {
-            lblNumbers[i].setText(STR."\{randomNumbers[i]}");
+        for (int i = 0; i < randomNumbers.length; i++) {
+            lblNumbers[i].setText("" + randomNumbers[i]);
         }
 
-         // exitGame();
+        // exitGame();
 
-        if( equalNumberCounter == 3 ){
+        if (equalNumberCounter == 3) {
             // exit the game
             exitGame();
         }
