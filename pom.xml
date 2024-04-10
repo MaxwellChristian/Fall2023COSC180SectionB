@@ -33,6 +33,13 @@
             <version>5.0.1</version>
         </dependency>
 
+        <!--        for sqlite database connection -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.8.9.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>
