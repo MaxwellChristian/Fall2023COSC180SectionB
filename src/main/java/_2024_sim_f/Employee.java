@@ -54,11 +54,19 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return STR."Employee{name='\{name}\{'\''}, location='\{location}\{'\''}, shiftHours=\{shiftHours}, totalItemsSold=\{totalItemsSold}\{'}'}";
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", shiftHours=" + shiftHours +
+                ", totalItemsSold=" + totalItemsSold +
+                '}';
     }
 
-    public String getAsCSV(){
-        return STR."\{this.name},\{this.location},\{this.shiftHours},\{this.totalItemsSold}";
+    public String getAsCSV() {
+        return name + ", "
+                + location + ", "
+                + shiftHours + ", "
+                + totalItemsSold;
     }
 
     @Override
