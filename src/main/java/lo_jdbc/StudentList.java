@@ -26,8 +26,7 @@ public class StudentList {
             // execute the database commands using statement
             String sqlQuery = "SELECT level FROM Students";
 
-            ResultSet resultSet;
-            resultSet = statement.executeQuery(sqlQuery);
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
             System.out.println("SQL executed: " + sqlQuery);
 
             // fetch and process the results

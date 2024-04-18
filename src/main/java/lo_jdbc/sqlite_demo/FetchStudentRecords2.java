@@ -12,7 +12,7 @@ public class FetchStudentRecords2 {
 
         try {
             // connect to database
-            Connection connection = DBHelper.connect(DBHelper.DATABASE_TYPE.SQLITE, "demo_db.sqlite");
+            Connection connection = DBHelper.connect(DBHelper.DB_TYPE.SQLITE, "demo_db.sqlite");
 
             String sqlQuery =
                     "SELECT " +

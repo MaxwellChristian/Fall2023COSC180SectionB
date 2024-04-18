@@ -27,7 +27,7 @@ public class Demo_1 {
 
             // create the operation that you need to perform with the database
             // here we will fetch some records from the table "students"
-            String query = "SELECT level, room FROM students";
+            String query = "SELECT level, room AS R FROM students";
 
             // to work with database commands, we need to create a 'Statement'
             Statement statement = connection.createStatement();
@@ -42,6 +42,7 @@ public class Demo_1 {
                 // display the columns from the fetched records
                 String fetchedColum1 = resultSet.getString(1);
                 int fetchedColum2 = resultSet.getInt(2);
+
 
                 System.out.println(fetchedColum1 + ", " + fetchedColum2);
             }
