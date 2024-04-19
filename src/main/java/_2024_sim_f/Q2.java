@@ -13,7 +13,7 @@ public class Q2 {
     public static final int PORT = 12345;
     private static ArrayList<Employee> employeeList;
 
-    public static void main() {
+    public static void main(String ... args) {
         startServer();
     }
 
