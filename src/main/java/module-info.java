@@ -6,5 +6,4 @@ module Fall2023COSC180SectionB {
 
     exports gui;
 
-    exports _2024_sim_2;
 }
